@@ -6,10 +6,12 @@ class Heidibot
   end
 
   def throw
-    winning_move(@past_throws.sample(random: seeded_random))
+    winning_move(@past_throws.sample(random: seeded_random)) ||
+      %i[rock paper scissors].sample(random: seeded_random)
   end
 
   def reset!(seed)
+    @past_throws = []
     @seeded_random = Random.new(seed)
   end
 
