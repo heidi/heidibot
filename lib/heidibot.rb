@@ -19,12 +19,12 @@ class Heidibot
 
   def winning_move(throw)
     case throw
-    when 'rock'
-      'paper'
-    when 'paper'
-      'scissors'
-    when 'scissors'
-      'rock'
+    when :rock
+      :paper
+    when :paper
+      :scissors
+    when :scissors
+      :rock
     end
   end
 end
