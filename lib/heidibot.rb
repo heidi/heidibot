@@ -1,11 +1,30 @@
 class Heidibot
+  attr_accessor :past_throws, :seeded_random
+
+  def initialize
+    @past_throws = []
+  end
+
   def throw
-    'rock'
+    winning_move(@past_throws.sample(random: seeded_random))
   end
 
-  def reset!(_seed)
+  def reset!(seed)
+    @seeded_random = Random.new(seed)
   end
 
-  def last_competitor_throw=(_throw)
+  def last_competitor_throw=(throw)
+    @past_throws << throw
+  end
+
+  def winning_move(throw)
+    case throw
+    when 'rock'
+      'paper'
+    when 'paper'
+      'scissors'
+    when 'scissors'
+      'rock'
+    end
   end
 end
